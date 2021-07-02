@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/v1/user','App\Http\Controllers\UserController@index');
+Route::post('/v1/logout','App\Http\Controllers\UserController@logout');

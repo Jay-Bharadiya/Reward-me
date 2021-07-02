@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(Request $request){
-        $user=User::create([
+
+        $user=User::updateOrCreate([
             'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
+            'email'=>$request->input('email'),],
+            [
 
             'app_version'=>$request->input('app_version'),
 
@@ -28,5 +30,14 @@ class UserController extends Controller
 
 
                 return response($response,201);
+    }
+    public function logout(Request $request,User $user){
+        $user=User::find($request->name);
+        return $user;
+        $user->device_token->revoke();
+
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
     }
 }
