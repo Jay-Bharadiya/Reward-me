@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/v1/user','App\Http\Controllers\UserController@index');
 Route::post('/v1/logout','App\Http\Controllers\UserController@logout');
+Route::post('/v1/pricing','App\Http\Controllers\UserController@pricing');
+Route::post('/v1/payment_type','App\Http\Controllers\UserController@payment_type');
